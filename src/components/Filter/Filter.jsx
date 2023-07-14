@@ -1,15 +1,27 @@
-import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import styled from '@emotion/styled';
 
-export default class Filter extends Component {
-    render() {
-        return (
-            <form>
-                <label htmlFor="">
-                    Find contacts by name
-                    <input type="text" />
-                </label>
-            </form>
-        )
-    }
+const Text = styled.p`
+    margin-bottom: 10px;
+`
+
+export const Filter = ({ filteredValue, filterChange }) => {
+    return (
+      <div>
+        <label>
+          <Text>Find contacts by name</Text>
+          <input
+            type="text"
+            onChange={filterChange}
+            name="filter"
+            value={filteredValue}
+          />
+        </label>
+      </div>
+    );
+}
+
+Filter.propTypes = {
+    filterChange: PropTypes.func.isRequired,
+    filteredValue: PropTypes.string.isRequired,
 }
