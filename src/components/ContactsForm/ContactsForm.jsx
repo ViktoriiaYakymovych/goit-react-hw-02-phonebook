@@ -2,27 +2,8 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Formik, Form, Field } from 'formik';
 import { nanoid } from 'nanoid';
-import styled from '@emotion/styled';
 
-const Label = styled.label`
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 10px;
-`
-
-const Button = styled.button`
-  cursor: pointer;
-  margin: 0 auto;
-  display: block;
-  margin-bottom: 10px;
-  background-color: transparent;
-  border: 1px black solid;
-  padding: 10px;
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-`;
+import { ContactsFormLabel, ContactsFormButton } from './ContactsForm.styled';
 export default class ContactsForm extends Component {
     state = {
         name: '',
@@ -50,7 +31,7 @@ export default class ContactsForm extends Component {
         return (
           <Formik initialValues={this.state} onSubmit={this.submitContact}>
             <Form>
-              <Label>
+              <ContactsFormLabel>
                 <span>Name</span>
                 <Field
                   onChange={this.handleInputChange}
@@ -62,8 +43,8 @@ export default class ContactsForm extends Component {
                   title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
                   required
                 />
-              </Label>
-              <Label>
+              </ContactsFormLabel>
+              <ContactsFormLabel>
                 <span>Phone</span>
                 <Field
                   onChange={this.handleInputChange}
@@ -74,8 +55,8 @@ export default class ContactsForm extends Component {
                   title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
                   required
                 />
-              </Label>
-              <Button type="submit">Add Contact</Button>
+              </ContactsFormLabel>
+              <ContactsFormButton type="submit">Add Contact</ContactsFormButton>
             </Form>
           </Formik>
         );
